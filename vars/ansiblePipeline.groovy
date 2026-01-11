@@ -8,7 +8,8 @@ def call(Map config) {
             stage('Clone') {
                 steps {
                     echo "Cloning repository..."
-                    git url: config.GIT_REPO
+                    git branch: 'main',
+                        url: config.GIT_REPO
                 }
             }
 
@@ -26,8 +27,8 @@ def call(Map config) {
                 steps {
                     echo "Executing Ansible Playbook..."
                     sh """
-                        cd ${config.CODE_BASE_PATH}
-                        ansible-playbook ${config.PLAYBOOK_NAME}
+                        echo "Simulating Ansible run"
+                        echo "ansible-playbook ${config.PLAYBOOK_NAME}"
                     """
                 }
             }
