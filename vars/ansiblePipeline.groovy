@@ -35,22 +35,22 @@ def call(Map config) {
                     """
                 }
             }
-
         }
 
         post {
             success {
-                notifySlack(
-                    config.SLACK_CHANNEL_NAME,
-                    "SUCCESS: ${config.ACTION_MESSAGE}"
+                slackSend(
+                    channel: config.SLACK_CHANNEL_NAME,
+                    message: "SUCCESS: ${config.ACTION_MESSAGE}"
                 )
             }
             failure {
-                notifySlack(
-                    config.SLACK_CHANNEL_NAME,
-                    "FAILED: Deployment to ${config.ENVIRONMENT}"
+                slackSend(
+                    channel: config.SLACK_CHANNEL_NAME,
+                    message: "FAILED: Deployment to ${config.ENVIRONMENT}"
                 )
             }
         }
     }
 }
+
