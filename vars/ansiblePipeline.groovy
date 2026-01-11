@@ -3,10 +3,6 @@ def call(Map config) {
     pipeline {
         agent any
 
-        environment {
-            ENVIRONMENT = config.ENVIRONMENT
-        }
-
         stages {
 
             stage('Clone') {
@@ -53,4 +49,3 @@ def call(Map config) {
         }
     }
 }
-
