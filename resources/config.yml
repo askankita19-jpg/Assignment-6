@@ -1,0 +1,9 @@
+def config = [
+    SLACK_CHANNEL_NAME : 'build-status',
+    ENVIRONMENT        : 'prod',
+    CODE_BASE_PATH     : 'env/prod',
+    ACTION_MESSAGE     : 'Deployment completed successfully',
+    KEEP_APPROVAL_STAGE: true,
+    GIT_REPO           : 'https://github.com/org/ansible-repo.git',
+    PLAYBOOK_NAME      : 'deploy.yml'
+]
