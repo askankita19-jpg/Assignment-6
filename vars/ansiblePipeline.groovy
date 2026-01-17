@@ -5,6 +5,10 @@ def call() {
     pipeline {
         agent any
 
+        options {
+            skipDefaultCheckout(true)
+        }
+
         stages {
 
             stage('Clone') {
@@ -28,7 +32,8 @@ def call() {
                 steps {
                     echo "Executing Ansible Playbook..."
                     sh """
-                        cd ${config.CODE_BASE_PATH}
+                        pwd
+                        ls -l
                         ansible-playbook ${config.PLAYBOOK_NAME}
                     """
                 }
@@ -40,12 +45,6 @@ def call() {
                 slackSend(
                     channel: config.SLACK_CHANNEL_NAME,
                     message: "SUCCESS: ${config.ACTION_MESSAGE}"
-                )
-            }
-            failure {
-                slackSend(
-                    channel: config.SLACK_CHANNEL_NAME,
-                    message: "FAILED: Deployment to ${config.ENVIRONMENT}"
                 )
             }
         }
