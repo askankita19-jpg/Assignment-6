@@ -1,7 +1,9 @@
 SLACK_CHANNEL_NAME: '#jenkins-assignment'
 ENVIRONMENT: 'prod'
 KEEP_APPROVAL_STAGE: true
+
 ANSIBLE_REPO: 'https://github.com/askankita19-jpg/K8s-Role.git'
-ANSIBLE_DIR: 'ansible-code'
+ANSIBLE_DIR: 'JenkAssignment6'
+
 PLAYBOOK_NAME: 'kube_playbook.yml'
 ACTION_MESSAGE: 'Deployment completed successfully'
