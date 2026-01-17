@@ -1,4 +1,6 @@
-def call(Map config) {
+def call() {
+
+    def config = readYaml(text: libraryResource('config.yml'))
 
     pipeline {
         agent any
@@ -8,14 +10,13 @@ def call(Map config) {
             stage('Clone') {
                 steps {
                     echo "Cloning repository..."
-                    git branch: 'main',
-                        url: config.GIT_REPO
+                    git branch: 'main', url: config.GIT_REPO
                 }
             }
 
             stage('User Approval') {
                 when {
-                    expression { config.KEEP_APPROVAL_STAGE == true }
+                    expression { config.KEEP_APPROVAL_STAGE }
                 }
                 steps {
                     input message: "Approve deployment to ${config.ENVIRONMENT}?",
@@ -27,8 +28,8 @@ def call(Map config) {
                 steps {
                     echo "Executing Ansible Playbook..."
                     sh """
-                        echo "Simulating Ansible run"
-                        echo "ansible-playbook ${config.PLAYBOOK_NAME}"
+                        cd ${config.CODE_BASE_PATH}
+                        ansible-playbook ${config.PLAYBOOK_NAME}
                     """
                 }
             }
