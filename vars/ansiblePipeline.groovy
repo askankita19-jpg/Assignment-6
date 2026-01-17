@@ -11,10 +11,10 @@ def call() {
 
         stages {
 
-            stage('Clone') {
+            stage('Clone Ansible Repo') {
                 steps {
-                    echo "Cloning repository..."
-                    git branch: 'main', url: config.GIT_REPO
+                    echo "Cloning Ansible repository..."
+                    git url: config.ANSIBLE_REPO, branch: 'main'
                 }
             }
 
