@@ -1,7 +1,7 @@
 SLACK_CHANNEL_NAME: '#jenkins-assignment'
 ENVIRONMENT: 'prod'
-CODE_BASE_PATH: '.'
-ACTION_MESSAGE: 'Deployment completed successfully'
 KEEP_APPROVAL_STAGE: true
-GIT_REPO: 'https://github.com/askankita19-jpg/Opstree-Batch-33.git'
+ANSIBLE_REPO: 'https://github.com/askankita19-jpg/K8s-Role.git'
+ANSIBLE_DIR: 'ansible-code'
 PLAYBOOK_NAME: 'kube_playbook.yml'
+ACTION_MESSAGE: 'Deployment completed successfully'
