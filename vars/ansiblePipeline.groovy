@@ -31,11 +31,13 @@ def call() {
             stage('Playbook Execution') {
                 steps {
                     echo "Executing Ansible Playbook..."
-                    sh """
-                        pwd
-                        ls -l
-                        ansible-playbook ${config.PLAYBOOK_NAME}
-                    """
+                    dir(config.ANSIBLE_DIR) {
+                        sh """
+                            pwd
+                            ls -l
+                            ansible-playbook ${config.PLAYBOOK_NAME}
+                        """
+                    }
                 }
             }
         }
